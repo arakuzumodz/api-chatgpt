@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/endereco(.*)",
+      "src": "/endereco",
       "dest": "index.js"
     }
   ]
