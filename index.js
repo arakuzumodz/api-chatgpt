@@ -12,12 +12,13 @@ app.get('/endereco', async (req, res) => {
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(endereco)}&format=json&polygon=1&addressdetails=1`;
 
     try {
-        // Faz a requisição ao Nominatim
-        const response = await axios.get(url);
-        // Envia a resposta JSON obtida
+        const response = await axios.get(url, {
+            headers: {
+                'User-Agent': 'RadarCriminal_ / 1.0 (arakuzuplay@gmail.com)'
+            }
+        });
         res.json(response.data);
     } catch (error) {
-        // Em caso de erro na requisição, envia o erro como resposta
         res.status(500).json({ message: 'Erro ao buscar dados de geolocalização', error: error.toString() });
     }
 });
